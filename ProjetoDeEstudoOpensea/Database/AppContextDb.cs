@@ -15,24 +15,9 @@ namespace ProjetoDeEstudoOpensea.Database
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.Entity<Arte>()
-                    .HasData(
-                    new Arte
-                    {
-                    id = 1,
-                    nome = "Ape"
-                },
-                new Arte
-                {
-                    id = 2,
-                    nome = "Cripto Punk",
-                    preco = 3500
-                },
-                new Arte
-                {
-                    id = 3,
-                    nome = "Teste"
-                }
-                );
+                .HasOne(a => a.Colecao)
+                .WithMany(c => c.Artes)
+                .HasForeignKey(a => a.ColecaoId);
 
             base.OnModelCreating(builder);
         }

@@ -7,5 +7,7 @@ namespace ProjetoDeEstudoOpensea.Model
         [Key]
         public int id { get; set; }
         public string? nome { get; set; }
+
+        public List<Arte> Artes { get; set; }
     }
 }
