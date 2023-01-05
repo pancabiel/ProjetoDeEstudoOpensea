@@ -9,5 +9,8 @@ namespace ProjetoDeEstudoOpensea.Model
         public string? nome { get; set; }
 
         public List<Arte> Artes { get; set; }
+
+        public string AutorId { get; set; }
+        public Usuario Autor { get; set; }
     }
 }

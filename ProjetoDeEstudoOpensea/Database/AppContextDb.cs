@@ -19,6 +19,18 @@ namespace ProjetoDeEstudoOpensea.Database
                 .WithMany(c => c.Artes)
                 .HasForeignKey(a => a.ColecaoId);
 
+            builder.Entity<Arte>()
+                .HasOne(a => a.Proprietario)
+                .WithMany(u => u.Artes)
+                .HasForeignKey(a => a.ProprietarioId)
+                .OnDelete(DeleteBehavior.NoAction);
+
+            builder.Entity<Colecao>()
+                .HasOne(c => c.Autor)
+                .WithMany(u => u.Colecoes)
+                .HasForeignKey(c => c.AutorId)
+                .OnDelete(DeleteBehavior.NoAction);
+
             base.OnModelCreating(builder);
         }
 

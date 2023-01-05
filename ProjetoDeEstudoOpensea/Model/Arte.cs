@@ -11,5 +11,8 @@ namespace ProjetoDeEstudoOpensea.Model
 
         public int ColecaoId { get; set; }
         public Colecao Colecao { get; set; }
+
+        public string ProprietarioId { get; set; }
+        public Usuario Proprietario { get; set; }
     }
 }
