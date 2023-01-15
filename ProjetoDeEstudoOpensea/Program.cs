@@ -3,7 +3,18 @@ using ProjetoDeEstudoOpensea.DAO;
 using ProjetoDeEstudoOpensea.Database;
 using ProjetoDeEstudoOpensea.Model;
 
+var meuCors = "_meuCors";
+
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: meuCors,
+                      policy =>
+                      {
+                          policy.WithOrigins("http://localhost:5173");
+                      });
+});
 
 builder.Services.AddTransient<ArteDAO>();
 builder.Services.AddTransient<ColecaoDAO>();
@@ -48,6 +59,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseCors(meuCors);
 
 app.UseAuthorization();
 
